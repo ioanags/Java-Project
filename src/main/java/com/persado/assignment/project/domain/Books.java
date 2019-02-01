@@ -1,11 +1,27 @@
 package com.persado.assignment.project.domain;
 
+
+
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="BOOKS")
 public class Books {
-    String bookName;
-    String bookSummary;
-    long ISBN;
-    int copiesPurschased;
-    int copiesAvailableForLoan;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
+    private long id;
+    @Column(name = "book_name")
+    private String bookName;
+    @Column(name = "book_summary")
+    private String bookSummary;
+    @Column(name = "isbn")
+    private long ISBN;
+    @Column(name = "copies_purchased")
+    private int copiesPurschased;
+    @Column(name = "copies_available")
+    private int copiesAvailableForLoan;
 
     public String getBookName() {
         return bookName;
