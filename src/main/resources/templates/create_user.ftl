@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring />
 <!doctype html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="">
+                        <a class="nav-link active" href="/create_user">
                             <span data-feather="plus-circle"></span>
                             Create new user
                         </a>
@@ -76,21 +77,24 @@
                 <h1 class="h2">Create User </h1>
             </div>
             <div class="container">
-                <form action="" name="userForm"  id="userForm" method="POST" autocomplete="off">
+                <form action="/create_user" name="createUserForm"  id="createUserForm" method="POST" autocomplete="off">
                     <div class="form-group w-50">
+                        <@spring.bind "createUserForm.firstName"/>
                         <label for="firstName"><strong>First Name</strong></label>
                         <input  name="firstName" type="text" class="form-control" id="first-name" placeholder="Enter user's first name">
                     </div>
                     <div class="form-group w-50">
+                        <@spring.bind "createUserForm.lastName"/>
                         <label for="lastName"><strong>Last Name</strong></label>
                         <input  name="lastName" type="text" class="form-control" id="last-name" placeholder="Enter user's last name">
                     </div>
                     <div class="form-group w-50">
-                        <label for="email"><strong>Last Name</strong></label>
-                        <input  name="email" type="text" class="form-control" id="email" placeholder="Enter user's email">
+                        <@spring.bind "createUserForm.address"/>
+                        <label for="address"><strong>Address</strong></label>
+                        <input  name="address" type="text" class="form-control" id="address" placeholder="Enter user's address">
                     </div>
 
-                    <button type="submit" class="btn btn-primary clearfix">Add</button>
+                    <button type="submit" class="btn btn-primary clearfix">Save</button>
                     <a href="/" class="btn btn-danger" role="button">Cancel</a>
                 </form>
             </div>

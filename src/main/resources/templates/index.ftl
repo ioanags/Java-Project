@@ -32,7 +32,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="">
+                        <a class="nav-link active" href="/create_user">
                             <span data-feather="plus-circle"></span>
                             Create new user
                         </a>
