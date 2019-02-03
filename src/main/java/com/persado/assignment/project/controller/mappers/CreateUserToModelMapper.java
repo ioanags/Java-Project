@@ -1,6 +1,6 @@
 package com.persado.assignment.project.controller.mappers;
 
-import com.persado.assignment.project.domain.User;
+
 import com.persado.assignment.project.form.CreateUserForm;
 import com.persado.assignment.project.models.UserModel;
 import org.springframework.stereotype.Component;

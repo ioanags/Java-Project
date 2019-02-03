@@ -4,6 +4,8 @@ package com.persado.assignment.project.domain;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="BOOKS")
@@ -11,17 +13,31 @@ public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private long id;
+    private Long id;
     @Column(name = "book_name")
     private String bookName;
     @Column(name = "book_summary")
     private String bookSummary;
     @Column(name = "isbn")
-    private long ISBN;
+    private Long isbn;
     @Column(name = "copies_purchased")
     private int copiesPurschased;
     @Column(name = "copies_available")
     private int copiesAvailableForLoan;
+    @ManyToMany(mappedBy="books")
+    private List<User> user = new ArrayList<>();
+
+    public List<User> getUser(){
+        return user;
+    }
+
+    public Books(String bookName, String bookSummary, Long isbn, int copiesPurschased, int copiesAvailableForLoan) {
+        this.bookName = bookName;
+        this.bookSummary = bookSummary;
+        this.isbn = isbn;
+        this.copiesPurschased = copiesPurschased;
+        this.copiesAvailableForLoan = copiesAvailableForLoan;
+    }
 
     public String getBookName() {
         return bookName;
@@ -39,12 +55,12 @@ public class Books {
         this.bookSummary = bookSummary;
     }
 
-    public long getISBN() {
-        return ISBN;
+    public Long getIsbn() {
+        return isbn;
     }
 
-    public void setISBN(long ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(Long isbn) {
+        this.isbn = isbn;
     }
 
     public int getCopiesPurschased() {

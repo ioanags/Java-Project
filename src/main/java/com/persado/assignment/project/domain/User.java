@@ -4,6 +4,7 @@ package com.persado.assignment.project.domain;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,6 +12,7 @@ import java.util.List;
 public class User {
     @Id
     @Column(name="user_id",nullable=false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @Column(name="first_name")
    private String firstName;
@@ -25,7 +27,24 @@ public class User {
             inverseJoinColumns=
             @JoinColumn(name="book_id",
                     referencedColumnName="book_id") )
-    private List<Books> booksOnLoan;
+    private List<Books> books = new ArrayList<>();
+    public List<Books> getBooks(){
+        return books;}
+
+
+    public User(String firstName, String lastName, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
