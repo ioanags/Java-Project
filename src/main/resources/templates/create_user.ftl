@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="">
+                        <a class="nav-link active" href="/manage_users">
                             <span data-feather="settings"></span>
                             Manage Users
                         </a>

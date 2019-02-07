@@ -21,7 +21,7 @@ public class User {
     @Column(name="address")
    private String address;
     @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="LOANED_DETAILS", joinColumns=
+    @JoinTable(name="LOAN_DETAILS", joinColumns=
     @JoinColumn(name="user_id",
             referencedColumnName="user_id"),
             inverseJoinColumns=
@@ -30,7 +30,7 @@ public class User {
     private List<Books> books = new ArrayList<>();
     public List<Books> getBooks(){
         return books;}
-
+public User(){}
 
     public User(String firstName, String lastName, String address) {
         this.firstName = firstName;

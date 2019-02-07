@@ -2,6 +2,7 @@ package com.persado.assignment.project.controller;
 
 import com.persado.assignment.project.controller.mappers.CreateUserToModelMapper;
 
+import com.persado.assignment.project.domain.User;
 import com.persado.assignment.project.form.CreateUserForm;
 import com.persado.assignment.project.models.UserModel;
 import com.persado.assignment.project.service.UserServiceImpl;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -45,6 +47,13 @@ public class UserController {
         userServiceImpl.create(userModel);
         return "redirect:/";
     }
+    @GetMapping("/manage_users")
+    public String usersList(Model model){
+        List<User> user = userServiceImpl.findAll();
+        model.addAttribute("list",user);
+        return "manage_users";
+    }
+
 
 
 }

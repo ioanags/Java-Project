@@ -7,6 +7,8 @@ import com.persado.assignment.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -19,5 +21,9 @@ public class UserServiceImpl implements UserService {
         User user = new User(userModel.getFirstName(),userModel.getLastName(),userModel.getAddress() );
         User savedUser = userRepository.save(user);
         return userMapper.mapToUserModel(savedUser);
+    }
+    @Override
+    public List<User> findAll(){
+        return userRepository.findAll();
     }
 }
