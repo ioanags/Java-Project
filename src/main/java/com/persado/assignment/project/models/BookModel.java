@@ -1,11 +1,20 @@
 package com.persado.assignment.project.models;
 
 public class BookModel {
+    private Long id;
     private String bookName;
     private String bookSummary;
     private Long isbn;
     private int copiesPurchased;
     private int copiesAvailableForLoan;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getBookName() {
         return bookName;
