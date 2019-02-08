@@ -41,10 +41,8 @@ public class UserController {
 
     }
     @PostMapping(value = "/create_user")
-    public String createUser(Model model,
-                             @Valid @ModelAttribute(CREATE_USER_FORM)
-                                     CreateUserForm createUserForm,
-                             BindingResult bindingResult){
+    public String createUser(@Valid @ModelAttribute(CREATE_USER_FORM)
+                                     CreateUserForm createUserForm){
 
 
         UserModel userModel = mapper.createUserFormToUserModel(createUserForm);
