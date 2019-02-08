@@ -25,11 +25,11 @@
                     Manage Books
                 </a>
             </li>
-            <li class="nav-item"><del>
-                    <a class="nav-link active" href="">
+            <li class="nav-item">
+                    <a class="nav-link active" href="/loan_books">
                         <span data-feather="book"></span>
                         Loan a book
-                    </a></del>
+                    </a>
             </li>
             <li class="nav-item"><del>
                     <a class="nav-link active" href="">
