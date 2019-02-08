@@ -1,4 +1,3 @@
-<#import "/spring.ftl" as spring />
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Create a user</title>
+    <title>Manage Users</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -39,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/create_book"">
+                        <a class="nav-link active" href="/create_book">
                             <span data-feather="plus-circle"></span>
                             Create new book
                         </a>
@@ -74,30 +73,42 @@
         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Create User </h1>
+                <h1 class="h2">Manage Users</h1>
             </div>
-            <div class="container">
-                <form action="/create_user" name="createUserForm"  id="createUserForm" method="POST" autocomplete="off">
-                    <div class="form-group w-50">
-                        <@spring.bind "createUserForm.firstName"/>
-                        <label for="firstName"><strong>First Name</strong></label>
-                        <input  name="firstName" type="text" class="form-control" id="first-name" placeholder="Enter user's first name">
-                    </div>
-                    <div class="form-group w-50">
-                        <@spring.bind "createUserForm.lastName"/>
-                        <label for="lastName"><strong>Last Name</strong></label>
-                        <input  name="lastName" type="text" class="form-control" id="last-name" placeholder="Enter user's last name">
-                    </div>
-                    <div class="form-group w-50">
-                        <@spring.bind "createUserForm.address"/>
-                        <label for="address"><strong>Address</strong></label>
-                        <input  name="address" type="text" class="form-control" id="address" placeholder="Enter user's address">
-                    </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Book Name</th>
+                        <th>Book Summary</th>
+                        <th>ISBN</th>
+                        <th>Copies Purchased</th>
+                        <th>Copies Available</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list list as books>
+                        <tr>
+                            <td>${books.id}</td>
+                            <td>${books.bookName}</td>
+                            <td>${books.bookSummary}</td>
+                            <td>${books.isbn?c}</td>
+                            <td>${books.copiesPurchased}</td>
+                            <td>${books.copiesAvailableForLoan}</td>
 
-                    <button type="submit" class="btn btn-primary clearfix">Save</button>
-                    <a href="/" class="btn btn-danger" role="button">Cancel</a>
-                </form>
-            </div>
+                            <td>
+                                <form action="/delete_books" name="deleteForm" method="GET">
+                                    <input type="hidden" name="id" value="${books.id}" />
+                                    <button class="btn btn-danger button-delete-confirmation" onclick="return confirm('Are you sure you want to delete this item?');" type="submit" name="action" value="Delete">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    </#list>
+                    </tbody>
+                </table>
 
         </main>
     </div>

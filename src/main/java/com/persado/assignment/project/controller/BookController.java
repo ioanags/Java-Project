@@ -1,6 +1,7 @@
 package com.persado.assignment.project.controller;
 
 import com.persado.assignment.project.controller.mappers.CreateBookToModelMapper;
+import com.persado.assignment.project.domain.Books;
 import com.persado.assignment.project.form.CreateBookForm;
 import com.persado.assignment.project.models.BookModel;
 import com.persado.assignment.project.service.BookServiceImpl;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
+
 @Controller
 public class BookController {
 
@@ -40,4 +43,11 @@ public class BookController {
         bookServiceImpl.create(bookModel);
         return "redirect:/";
     }
+    @GetMapping("/manage_books")
+    public String booksList(Model model){
+        List<Books> books = bookServiceImpl.findAllBooks();
+        model.addAttribute("list",books);
+        return "manage_books";
+    }
+
 }

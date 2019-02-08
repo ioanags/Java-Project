@@ -11,7 +11,7 @@ public class BookToBookModelMapper {
         bookModel.setBookName(books.getBookName());
         bookModel.setBookSummary(books.getBookSummary());
         bookModel.setIsbn(books.getIsbn());
-        bookModel.setCopiesPurchased(books.getCopiesPurschased());
+        bookModel.setCopiesPurchased(books.getCopiesPurchased());
         bookModel.setCopiesAvailableForLoan(books.getCopiesAvailableForLoan());
         return bookModel;
     }

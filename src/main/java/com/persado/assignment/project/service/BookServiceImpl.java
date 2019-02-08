@@ -7,6 +7,7 @@ import com.persado.assignment.project.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -21,5 +22,9 @@ public class BookServiceImpl implements BookService {
         Books savedBooks = bookRepository.save(book);
         return bookToBookModelMapper.mapToBookModel(savedBooks);
 
+    }
+    @Override
+    public List<Books> findAllBooks(){
+        return bookRepository.findAll();
     }
 }
