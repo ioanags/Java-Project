@@ -12,7 +12,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //disable login for any resource
         httpSecurity.authorizeRequests().anyRequest().permitAll();
 
-        //this code will allow h2-console in addition with Spring Security
+        //allow h2-console in addition with Spring Security
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();
 

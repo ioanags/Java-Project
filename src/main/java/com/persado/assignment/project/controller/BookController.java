@@ -3,10 +3,12 @@ package com.persado.assignment.project.controller;
 import com.persado.assignment.project.controller.mappers.CreateBookToModelMapper;
 import com.persado.assignment.project.controller.mappers.DeleteMapper;
 import com.persado.assignment.project.domain.Books;
+import com.persado.assignment.project.domain.User;
 import com.persado.assignment.project.form.CreateBookForm;
 import com.persado.assignment.project.form.DeleteForm;
 import com.persado.assignment.project.models.BookModel;
 import com.persado.assignment.project.service.BookServiceImpl;
+import com.persado.assignment.project.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,7 @@ public class BookController {
     private CreateBookToModelMapper mapper;
     @Autowired
     private DeleteMapper deleteMapper;
+
 
     @GetMapping(value = "/create_book")
     public String createUser(Model model) {
@@ -59,5 +62,6 @@ public class BookController {
         bookServiceImpl.delete(bookModel.getId());
         return "redirect:/manage_books";
     }
+
 
 }

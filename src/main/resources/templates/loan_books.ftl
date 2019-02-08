@@ -3,7 +3,7 @@
 <head>
     <#include "partials/head.ftl">
 
-    <title>Manage Books </title>
+    <title>Manage Books</title>
 
 </head>
 
@@ -16,7 +16,6 @@
 
 
 </nav>
-
 <div class="container-fluid mt-5">
     <div class="row">
         <#include "partials/navbar.ftl">
@@ -28,36 +27,34 @@
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>#</th>
                         <th>Book Name</th>
-                        <th>Book Summary</th>
-                        <th>ISBN</th>
-                        <th>Copies Purchased</th>
                         <th>Copies Available</th>
-                        <th>Delete</th>
+                        <th>Users</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <#list list as books>
                         <tr>
-                            <td>${books.id}</td>
                             <td>${books.bookName}</td>
-                            <td>${books.bookSummary}</td>
-                            <td>${books.isbn?c}</td>
-                            <td>${books.copiesPurchased}</td>
-                            <td>${books.copiesAvailableForLoan}</td>
-
+                            <td>${books.copiesAvailableForLoan} available</td>
                             <td>
-                                <form action="/delete_book" name="deleteForm" method="GET">
-                                    <input type="hidden" name="id" value="${books.id}" />
-                                    <button class="btn btn-danger button-delete-confirmation" onclick="return confirm('Are you sure you want to delete this book?');" type="submit" name="action" value="Delete">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
+                                    <select>
+                                        <#list users as user>
+                                    <option>${user.firstName} ${user.lastName}</option>
+                                        </#list>
+                                    </select>
 
-                    </#list>
+                            </td>
+                            <td><button type="submit" class="btn btn-primary btn-sm" disabled>Accept Loan</button></td>
+
+
+                        </tr>
+                        </#list>
+
                     </tbody>
                 </table>
+                <a href="/" class="btn btn-danger" role="button">Return</a>
 
         </main>
     </div>
