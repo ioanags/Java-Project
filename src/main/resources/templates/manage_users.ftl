@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="">
+                        <a class="nav-link active" href="/manage_books">
                             <span data-feather="settings"></span>
                             Manage Books
                         </a>
@@ -93,8 +93,9 @@
                             <td>${user.firstName}</td>
                             <td>${user.lastName}</td>
                             <td>${user.address}</td>
+
                             <td>
-                                <form action="/delete_users" name="deleteForm" method="GET">
+                                <form action="/delete_user" name="deleteForm" method="GET">
                                     <input type="hidden" name="id" value="${user.id}" />
                                     <button class="btn btn-danger button-delete-confirmation" onclick="return confirm('Are you sure you want to delete this item?');" type="submit" name="action" value="Delete">Delete</button>
                                 </form>

@@ -27,10 +27,15 @@ public class User {
             inverseJoinColumns=
             @JoinColumn(name="book_id",
                     referencedColumnName="book_id") )
-    private List<Books> books = new ArrayList<>();
+   private List<Books> books = new ArrayList<>();
     public List<Books> getBooks(){
         return books;}
-public User(){}
+
+    public void setBooks(List<Books> books) {
+        this.books = books;
+    }
+
+    public User(){}
 
     public User(String firstName, String lastName, String address) {
         this.firstName = firstName;

@@ -12,7 +12,7 @@ import java.util.List;
 public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_id")
+    @Column(name = "book_id",nullable=false)
     private Long id;
     @Column(name = "book_name")
     private String bookName;
@@ -21,7 +21,7 @@ public class Books {
     @Column(name = "isbn")
     private Long isbn;
     @Column(name = "copies_purchased")
-    private int copiesPurschased;
+    private int copiesPurchased;
     @Column(name = "copies_available")
     private int copiesAvailableForLoan;
     @ManyToMany(mappedBy="books")
@@ -31,12 +31,22 @@ public class Books {
         return user;
     }
 
-    public Books(String bookName, String bookSummary, Long isbn, int copiesPurschased, int copiesAvailableForLoan) {
+    public Books(String bookName, String bookSummary, Long isbn, int copiesPurchased, int copiesAvailableForLoan) {
         this.bookName = bookName;
         this.bookSummary = bookSummary;
         this.isbn = isbn;
-        this.copiesPurschased = copiesPurschased;
+        this.copiesPurchased = copiesPurchased;
         this.copiesAvailableForLoan = copiesAvailableForLoan;
+    }
+
+    public Books(){}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getBookName() {
@@ -63,12 +73,12 @@ public class Books {
         this.isbn = isbn;
     }
 
-    public int getCopiesPurschased() {
-        return copiesPurschased;
+    public int getCopiesPurchased() {
+        return copiesPurchased;
     }
 
-    public void setCopiesPurschased(int copiesPurschased) {
-        this.copiesPurschased = copiesPurschased;
+    public void setCopiesPurchased(int copiesPurchased) {
+        this.copiesPurchased = copiesPurchased;
     }
 
     public int getCopiesAvailableForLoan() {

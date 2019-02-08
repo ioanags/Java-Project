@@ -8,4 +8,5 @@ import java.util.List;
 public interface UserService {
     UserModel create(UserModel userModel);
     List<User> findAll();
+    void delete(Long id);
 }

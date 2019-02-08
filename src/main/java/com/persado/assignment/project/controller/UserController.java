@@ -2,8 +2,10 @@ package com.persado.assignment.project.controller;
 
 import com.persado.assignment.project.controller.mappers.CreateUserToModelMapper;
 
+import com.persado.assignment.project.controller.mappers.DeleteMapper;
 import com.persado.assignment.project.domain.User;
 import com.persado.assignment.project.form.CreateUserForm;
+import com.persado.assignment.project.form.DeleteForm;
 import com.persado.assignment.project.models.UserModel;
 import com.persado.assignment.project.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class UserController {
     private UserServiceImpl userServiceImpl;
     @Autowired
     private CreateUserToModelMapper mapper;
+    @Autowired
+    private DeleteMapper deleteMapper;
 
     @GetMapping(value = "/create_user")
     public String createUser(Model model) {
@@ -52,6 +56,15 @@ public class UserController {
         List<User> user = userServiceImpl.findAll();
         model.addAttribute("list",user);
         return "manage_users";
+    }
+    @GetMapping("/delete_user")
+    public String deleteUser(Model model,
+                                    DeleteForm deleteForm){
+        List<User> user = userServiceImpl.findAll();
+        model.addAttribute("list",user);
+        UserModel userModel = deleteMapper.userDelete(deleteForm);
+        userServiceImpl.delete(userModel.getId());
+        return "redirect:/manage_users";
     }
 
 
